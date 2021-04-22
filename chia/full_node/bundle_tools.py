@@ -7,7 +7,7 @@ import io
 from clvm_tools import binutils
 
 from chia.full_node.generator import create_compressed_generator
-from chia.types.blockchain_format.program import SerializedProgram, Program
+from chia.types.blockchain_format.program import SerializedProgram
 from chia.types.coin_solution import CoinSolution
 from chia.types.generator_types import BlockGenerator, CompressorArg
 from chia.types.spend_bundle import SpendBundle
@@ -54,7 +54,9 @@ def simple_solution_generator(bundle: SpendBundle) -> BlockGenerator:
 
     # this is here temporarily to convince ourselves that this change produces
     # the identical generator
-    assert SExp.to((binutils.assemble("#q"), [spend_bundle_to_coin_solution_entry_list(bundle)])).as_bin() == block_program
+    assert (
+        SExp.to((binutils.assemble("#q"), [spend_bundle_to_coin_solution_entry_list(bundle)])).as_bin() == block_program
+    )
 
     return BlockGenerator(SerializedProgram.from_bytes(block_program), [])
 

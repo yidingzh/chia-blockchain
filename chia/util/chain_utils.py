@@ -9,7 +9,9 @@ from chia.util.condition_tools import (
 )
 
 
-def additions_for_solution(coin_name: bytes32, puzzle_reveal: SerializedProgram, solution: SerializedProgram, max_cost: int) -> List[Coin]:
+def additions_for_solution(
+    coin_name: bytes32, puzzle_reveal: SerializedProgram, solution: SerializedProgram, max_cost: int
+) -> List[Coin]:
     """
     Checks the conditions created by CoinSolution and returns the list of all coins created
     """
