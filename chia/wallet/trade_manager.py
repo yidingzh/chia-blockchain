@@ -369,8 +369,8 @@ class TradeManager:
         wallets: Dict[bytes32, Any] = dict()  # colour to wallet dict
 
         for coinsol in offer_spend_bundle.coin_solutions:
-            puzzle: Program = coinsol.puzzle_reveal
-            solution: Program = coinsol.solution
+            puzzle: Program = Program.from_bytes(bytes(coinsol.puzzle_reveal))
+            solution: Program = Program.from_bytes(bytes(coinsol.solution))
 
             # work out the deficits between coin amount and expected output for each
             r = cc_utils.uncurry_cc(puzzle)
