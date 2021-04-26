@@ -11,6 +11,7 @@ from chia.cmds.show import show_cmd
 from chia.cmds.start import start_cmd
 from chia.cmds.stop import stop_cmd
 from chia.cmds.wallet import wallet_cmd
+from chia.cmds.operation import operation_cmd
 from chia.util.default_root import DEFAULT_ROOT_PATH
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
@@ -70,7 +71,7 @@ cli.add_command(start_cmd)
 cli.add_command(stop_cmd)
 cli.add_command(netspace_cmd)
 cli.add_command(farm_cmd)
-
+cli.add_command(operation_cmd)
 
 def main() -> None:
     monkey_patch_click()
